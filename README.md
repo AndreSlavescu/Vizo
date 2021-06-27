@@ -1,7 +1,7 @@
 # Vizo
 ### EngHack 2021 project
 
-[<img src="docs/enghack.png" width="40px">]
+[<img src="docs/enghack.png" width="300px">]
 
 #### Before running the script, install all packages and libraries: 
 ```
