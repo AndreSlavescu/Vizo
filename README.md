@@ -1,6 +1,8 @@
 # Vizo
 ### EngHack 2021 project
 
+[EngHack 2021 - Vizo](https://devpost.com/software/vizo)
+
 [<img src="docs/enghack.png" width="300px">]
 
 #### Before running the script, install all packages and libraries: 
