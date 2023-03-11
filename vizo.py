@@ -1,10 +1,6 @@
-#!/usr/bin/env python3
-
 import cv2
-from numpy.lib.ufunclike import _dispatcher
 import depthai as dai
 import time
-import re
 import os
 
 stepSize = 0.05
@@ -37,7 +33,7 @@ monoRight.setBoardSocket(dai.CameraBoardSocket.RIGHT)
 lrcheck = False
 subpixel = False
 
-stereo.setConfidenceThreshold(255)
+stereo.initialConfig.setConfidenceThreshold(255)
 stereo.setLeftRightCheck(lrcheck)
 stereo.setSubpixel(subpixel)
 
@@ -134,25 +130,21 @@ with dai.Device(pipeline) as device:
         delta = time.time() - prevTime
         if delta > 1:
             print(dstr)
-            # result = re.finditer(r"(FFFF)", dstr)
             findstr = "FFF"
             result = [(i, dstr[i:i+len(findstr)]) for i in findall(findstr, dstr)]
-            # print(result)
 
             minDist = 15
             midpoint = len(dstr)//2
             substrlen = len(findstr)
             
             for match in result:
-                # print("match", match)
                 (i, _) = match
                 (x1, x2) = (i, i+substrlen-1)
-                # print(x1, x2)
                 distToCenter = abs(x1 + (x2 - x1)//2 - midpoint)
                 if distToCenter < minDist:
                     minDist = distToCenter
                     minSpan = (x1, x2)
-            # print(minDist, minSpan)
+
             if minDist < 15:
                 (x1, x2) = minSpan
                 distToCenter = x1 + (x2 - x1)//2 - midpoint

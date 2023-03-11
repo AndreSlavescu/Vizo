@@ -5,14 +5,12 @@
 
 [<img src="docs/enghack.png" width="300px">]
 
-#### Before running the script, install all packages and libraries: 
+#### Build Dependencies: 
 ```
-python3 -m pip install depthai
-python3 -m pip install cv2
-python3 -m pip install numpy
+pip install -r requirements.txt
 ```
 
-#### When all packages are successfully installed, connect a camera via USB to your computer (any camera should work)
+#### After installing dependencies, connect your OAK-D device and run the script
 #### Run the script with the following command;
 
 ```
